@@ -1,9 +1,17 @@
 package com.example.workshopspringmongodb.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+@Document // automaticamente o Spring Data MongoDB cria uma collection com nome user no banco
+//@Document(collection="user") // Outra opção é definir explicitamente o nome da collection desejada
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
 
+    @Id
     private String id;
     private String name;
     private String email;
