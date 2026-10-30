@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.time.LocalDateTime;
-
 @ControllerAdvice //indica ao Spring que essa classe é capaz de tratar possíveis erros nas requisições
 public class ResourceExceptionHandler {
 
