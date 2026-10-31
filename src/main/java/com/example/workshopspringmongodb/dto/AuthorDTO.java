@@ -2,6 +2,10 @@ package com.example.workshopspringmongodb.dto;
 
 import com.example.workshopspringmongodb.domain.User;
 
+/**
+ * A ideia desta classe é projetar no banco de dados apenas os dados do autor que realmente interessam,
+ * ao invés de persistir todos os dados de um usuário como autor de um post ou comentário.
+ */
 public class AuthorDTO {
 
     private String id;

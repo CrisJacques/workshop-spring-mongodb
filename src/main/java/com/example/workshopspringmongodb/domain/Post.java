@@ -21,6 +21,13 @@ public class Post {
 
     }
 
+    /**
+     * Fazendo desta forma, o objeto AuthorDTO author irá ficar aninhado com o objeto Post no MongoDB.
+     * Caso o desejo seja de que o Post tenha apenas a referência ao usuário, aí deve-se usar o @DBRef.
+     *
+     * Se uma entidade será persistida no banco aninhada a outra ou se será usada apenas uma referência
+     * vai depender de cada caso, e é uma decisão técnica.
+     */
     public Post(String id, LocalDate date, String title, String body, AuthorDTO author) {
         this.id = id;
         this.date = date;

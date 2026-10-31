@@ -31,7 +31,9 @@ public class Instantiation implements CommandLineRunner {
         User maria = new User(null, "Maria Brown", "maria@gmail.com");
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
-        userRepository.saveAll(Arrays.asList(maria, alex, bob));
+        userRepository.saveAll(Arrays.asList(maria, alex, bob)); // Tem que salvar os users primeiro, senão
+        // quando for salvar os posts os ids dos usuários estarão null porque eles ainda não foram persistidos
+        // no banco de dados.
 
         Post post1 = new Post(null,
                 LocalDate.parse("21/03/2018", dtFormatter),
