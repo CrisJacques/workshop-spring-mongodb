@@ -2,6 +2,7 @@ package com.example.workshopspringmongodb.repository;
 
 import com.example.workshopspringmongodb.domain.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,5 +27,15 @@ public interface PostRepository extends MongoRepository<Post,String> {
      * Esses métodos são chamados de query methods.
      */
     List<Post> findByTitleContainingIgnoreCase(String text);
+
+    /**
+     * O @Query permite executar consultas usando a sintaxe do MongoDB. Na documentação do MongoDB tem mais informações
+     * sobre as mais variadas formas de fazer consultas.
+     *
+     * No caso abaixo, a consulta a ser feita leva em conta o atributo title, cujo regex será lido da primeira variável
+     * informada na chamada do método (?0 indica isso), ignorando maíusculas e minúsculas (o $options: 'i' indica isso).
+     */
+    @Query("{ 'title': { $regex: ?0, $options: 'i' } }")
+    List<Post> searchTitle(String text);
 
 }
