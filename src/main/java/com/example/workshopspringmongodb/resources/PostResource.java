@@ -1,13 +1,14 @@
 package com.example.workshopspringmongodb.resources;
 
 import com.example.workshopspringmongodb.domain.Post;
-import com.example.workshopspringmongodb.dto.UserDTO;
 import com.example.workshopspringmongodb.resources.util.URL;
 import com.example.workshopspringmongodb.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,18 @@ public class PostResource {
     @GetMapping(value = "/titlesearch")
     public ResponseEntity<List<Post>> findByTitle(@RequestParam(value="text", defaultValue = "") String text) {
         return ResponseEntity.ok().body(postService.findByTitle(URL.decodeParam(text)));
+    }
+
+    @GetMapping(value = "/fullsearch")
+    public ResponseEntity<List<Post>> fullSearch(
+            @RequestParam(value="text", defaultValue = "") String text,
+            @RequestParam(value="minDate", defaultValue = "") String minDate,
+            @RequestParam(value="maxDate", defaultValue = "") String maxDate) {
+        return ResponseEntity.ok().body(postService.fullSearch(
+                URL.decodeParam(text),
+                URL.convertDate(minDate, LocalDate.parse("01/01/1970", DateTimeFormatter.ofPattern("dd/MM/yyyy"))),
+                URL.convertDate(maxDate, LocalDate.now()
+                )));
     }
 
 }
