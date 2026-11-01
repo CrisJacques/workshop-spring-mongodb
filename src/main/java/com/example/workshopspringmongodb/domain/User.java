@@ -4,15 +4,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Document // automaticamente o Spring Data MongoDB cria uma collection com nome user no banco
 //@Document(collection="user") // Outra opção é definir explicitamente o nome da collection desejada
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User {
 
     @Id
     private String id;
