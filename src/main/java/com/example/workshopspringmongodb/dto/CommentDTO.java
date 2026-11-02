@@ -1,5 +1,10 @@
 package com.example.workshopspringmongodb.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 /**
@@ -9,43 +14,13 @@ import java.time.LocalDate;
  * Se o comentário fosse um objeto mais complexo (tivesse mais atributos e comportamentos), talvez valeria
  * a pena transformaá-lo em uma entidade, mas isso varia caso a caso.
  */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentDTO {
 
     private String text;
     private LocalDate date;
     private AuthorDTO author;
-
-    public CommentDTO() {
-
-    }
-
-    public CommentDTO(String text, LocalDate date, AuthorDTO author) {
-        this.text = text;
-        this.date = date;
-        this.author = author;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public AuthorDTO getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(AuthorDTO author) {
-        this.author = author;
-    }
 }
